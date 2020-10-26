@@ -1,0 +1,41 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+<form action="{{ url_for('donatrack_validate') }}" method="post" autocomplete="off">
+
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+
+
+        <hr size="100">
+        <div class="form-group">
+            {{ form.csrf_token }}
+            {{ form.activation_code.label }}<br>
+            {{ form.activation_code(size=50) }}
+            {% for error in form.activation_code.errors %}
+            <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <hr class="hr" >
+
+
+        {{ ctr.submit() }}
+
+
+        <span>&nbsp; &nbsp;</span> <span>&nbsp;{{ ctr.cancel() }} &nbsp;</span>
+        <span>&nbsp; &nbsp;</span> <span>&nbsp;{{ ctr.close() }} &nbsp;</span>
+        <hr class="hr" >
+        <div >
+            License Path: {{ license_path }}<br>
+            Please copy <b style="font:11px; color:red">License.txt</b> file and send to support
+
+        </div>
+
+    </div>
+</form>
+
+
+
+{% endblock %}

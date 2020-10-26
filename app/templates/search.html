@@ -1,0 +1,71 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+   <form action="" method="post">
+
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+
+        <h4 align="center">Search for {{  title }}</h4>
+
+        <hr size="100">
+        <div class="form-group">
+            <table class="table" width="50%">
+
+            <tr>
+
+                <td rowspan="2">
+                    {{ form.search_option() }}
+                    {% for error in form.search_option.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                    {% endfor %}
+                </td>
+
+
+
+                <td align="center">
+                    {{ form.src_string(size=30) }} {{ form.get_module() }}
+
+                     {% for error in form.src_string.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                     {% endfor %}
+                </td>
+
+
+
+
+
+
+            </tr>
+
+            <tr>
+             {% if calledby == "Member" %}
+                <td>
+                      {{ ctr.search() }}
+                    {{ ctr.cancel() }}
+                    {{ ctr.close() }}
+                </td>
+            {%  else: %}
+                <td align="center">
+                      {{ ctr.search() }}
+                    {{ ctr.cancel() }}
+                    {{ ctr.close() }}
+                </td>
+            {% endif %}
+
+
+
+
+
+
+
+
+            </tr>
+
+</table>
+ </div>
+</div>
+</form>
+{% endblock %}

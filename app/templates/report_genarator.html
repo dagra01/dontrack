@@ -1,0 +1,62 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+});
+</script>
+
+    <div class="page-header">
+        <h1>
+            <small>
+               {{ title }}
+            </small>
+        </h1>
+    </div>
+    <div class="table-responsive-sm">
+        <input id="myInput" type="text" placeholder="Search..">
+        <table class="table table-striped table table-sm" id="mTable">
+            <thead class="thead-dark">
+                <tr>
+                    {% for header in qry_result.keys() %}
+                          <th scope="col">{{ header }}</th>
+                    {%  endfor  %}
+
+            </thead>
+            <tbody id="myTable">
+            {% for i in range(row_len) %}
+                <tr>
+                    {% for item in qry_result.keys() %}
+                        <td>
+
+                            {% if qry_result[item][i]|float != 0.0 and item !='Mobile No.'  and item !='Member ID' %}
+                                {{ '{0:,.2f}'.format(qry_result[item][i]|float) }}
+                            {% else: %}
+                                {{ qry_result[item][i] }}
+                            {% endif %}
+
+
+                        </td>
+                    {%  endfor  %}
+                </tr>
+            {%  endfor  %}
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <a class="btn btn-success" href="{{ url_for('generate_report') }}">Close</a>
+<a class="btn btn-success" href="{{ url_for('download') }}">Download</a>
+
+
+
+{% endblock %}

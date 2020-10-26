@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7c7f960e-22b8-4e2a-b77b-df614c7bf16c" name="Default" comment="requirements.txt update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Donatrack" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PATH_TO_GIT" value="C:\Program Files\Git\cmd\git.exe" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="ProjectId" id="1VOuYJJA5Gd1cIbExoTksd6VtYV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="Donatrack" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="Donatrack" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Apps\gitrepo\donatrack_web\app" />
+      <recent name="C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app\templates" />
+      <recent name="C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app" />
+      <recent name="C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack" />
+      <recent name="C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\venv\Lib\site-packages\werkzeug" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Donatrack">
+    <configuration name="Donatrack" type="PythonConfigurationType" factoryName="Python">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Donatrack.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pyinstaller" type="PythonConfigurationType" factoryName="Python">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="-m PyInstaller" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/compiledapp" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="-y --clean --onedir --add-data=&quot;$PROJECT_DIR$/donatrack.db;.&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app\templates;templates&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app\static;static&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\uploadfolder;uploadfolder&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\errorlog;errorlog&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\donatrackdb;donatrackdb&quot; --hidden-import pyexcel.plugins.renderers.sqlalchemy --hidden-import pyexcel.plugins.renderers.django --hidden-import pyexcel.plugins.renderers.excel --hidden-import pyexcel.plugins.renderers._texttable --hidden-import pyexcel.plugins.parsers.excel --hidden-import pyexcel.plugins.parsers.sqlalchemy --hidden-import pyexcel.plugins.sources.http --hidden-import pyexcel.plugins.sources.file_input --hidden-import pyexcel.plugins.sources.memory_input --hidden-import pyexcel.plugins.sources.file_output --hidden-import pyexcel.plugins.sources.output_to_memory --hidden-import pyexcel.plugins.sources.pydata.bookdict --hidden-import pyexcel.plugins.sources.pydata.dictsource --hidden-import pyexcel.plugins.sources.pydata.arraysource --hidden-import pyexcel.plugins.sources.pydata.records --hidden-import pyexcel.plugins.sources.django --hidden-import pyexcel.plugins.sources.sqlalchemy --hidden-import pyexcel.plugins.sources.querysets --hidden-import pyexcel_io.writers --hidden-import pyexcel_io.readers --clean" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pyinstaller(Donatrack)" type="PythonConfigurationType" factoryName="Python">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="-m PyInstaller" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\okechukwu.oha\PycharmProjects\untitled\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/compiledapp" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Donatrack.py" />
+      <option name="PARAMETERS" value="-y -w --clean --onedir --add-data=&quot;$PROJECT_DIR$/donatrack.db;.&quot; --add-data=&quot;$PROJECT_DIR$/clds.dat;.&quot; --add-data=&quot;$PROJECT_DIR$/bkclds.dat;.&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app\templates;templates&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\app\static;static&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\uploads;uploads&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\downloads;downloads&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\backup;backup&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\errorlog;errorlog&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\lic;lic&quot; --add-data &quot;C:\Users\okechukwu.oha-a\PycharmProjects\Donatrack\wkhtmltopdf;wkhtmltopdf&quot; --hidden-import pyexcel.plugins.renderers.sqlalchemy --hidden-import pyexcel.plugins.renderers.django --hidden-import pyexcel.plugins.renderers.excel --hidden-import pyexcel.plugins.renderers._texttable --hidden-import pyexcel.plugins.parsers.excel --hidden-import pyexcel.plugins.parsers.sqlalchemy --hidden-import pyexcel.plugins.sources.http --hidden-import pyexcel.plugins.sources.file_input --hidden-import pyexcel.plugins.sources.memory_input --hidden-import pyexcel.plugins.sources.file_output --hidden-import pyexcel.plugins.sources.output_to_memory --hidden-import pyexcel.plugins.sources.pydata.bookdict --hidden-import pyexcel.plugins.sources.pydata.dictsource --hidden-import pyexcel.plugins.sources.pydata.arraysource --hidden-import pyexcel.plugins.sources.pydata.records --hidden-import pyexcel.plugins.sources.django --hidden-import pyexcel.plugins.sources.sqlalchemy --hidden-import pyexcel.plugins.sources.querysets --hidden-import pyexcel_io.writers --hidden-import pyexcel_io.readers --clean" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run " type="PythonConfigurationType" factoryName="Python">
+      <module name="Donatrack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Donatrack" />
+      <item itemvalue="Python.pyinstaller" />
+      <item itemvalue="Python.pyinstaller(Donatrack)" />
+      <item itemvalue="Python.run " />
+      <item itemvalue="Python.config" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.config" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\okechukwu.oha-a\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c7f960e-22b8-4e2a-b77b-df614c7bf16c" name="Default" comment="" />
+      <created>1530534770787</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1530534770787</updated>
+    </task>
+    <task id="LOCAL-00003" summary="requirements.txt update">
+      <created>1594499268723</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1594499268723</updated>
+    </task>
+    <task id="LOCAL-00004" summary="requirements.txt update">
+      <created>1594500237220</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1594500237220</updated>
+    </task>
+    <task id="LOCAL-00005" summary="requirements.txt update">
+      <created>1594500268141</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1594500268141</updated>
+    </task>
+    <task id="LOCAL-00006" summary="requirements.txt update">
+      <created>1594502414446</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594502414446</updated>
+    </task>
+    <task id="LOCAL-00007" summary="requirements.txt update">
+      <created>1594503115889</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1594503115889</updated>
+    </task>
+    <task id="LOCAL-00008" summary="requirements.txt update">
+      <created>1594506405050</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594506405050</updated>
+    </task>
+    <task id="LOCAL-00009" summary="requirements.txt update">
+      <created>1594509194675</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1594509194675</updated>
+    </task>
+    <task id="LOCAL-00010" summary="requirements.txt update">
+      <created>1594509870582</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1594509870582</updated>
+    </task>
+    <task id="LOCAL-00011" summary="requirements.txt update">
+      <created>1594509956912</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1594509956912</updated>
+    </task>
+    <task id="LOCAL-00012" summary="requirements.txt update">
+      <created>1594511580018</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1594511580018</updated>
+    </task>
+    <task id="LOCAL-00013" summary="requirements.txt update">
+      <created>1594551660937</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1594551660937</updated>
+    </task>
+    <task id="LOCAL-00014" summary="requirements.txt update">
+      <created>1594554059975</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1594554059975</updated>
+    </task>
+    <task id="LOCAL-00015" summary="requirements.txt update">
+      <created>1594555749830</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1594555749830</updated>
+    </task>
+    <task id="LOCAL-00016" summary="requirements.txt update">
+      <created>1594562053364</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1594562053364</updated>
+    </task>
+    <task id="LOCAL-00017" summary="requirements.txt update">
+      <created>1594562335004</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1594562335004</updated>
+    </task>
+    <task id="LOCAL-00018" summary="requirements.txt update">
+      <created>1594562948686</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1594562948686</updated>
+    </task>
+    <task id="LOCAL-00019" summary="requirements.txt update">
+      <created>1594565874418</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1594565874418</updated>
+    </task>
+    <task id="LOCAL-00020" summary="requirements.txt update">
+      <created>1595782195171</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1595782195171</updated>
+    </task>
+    <task id="LOCAL-00021" summary="requirements.txt update">
+      <created>1595783290694</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1595783290694</updated>
+    </task>
+    <task id="LOCAL-00022" summary="requirements.txt update">
+      <created>1595783764093</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1595783764093</updated>
+    </task>
+    <task id="LOCAL-00023" summary="requirements.txt update">
+      <created>1595784620090</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1595784620090</updated>
+    </task>
+    <task id="LOCAL-00024" summary="requirements.txt update">
+      <created>1595784930726</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1595784930726</updated>
+    </task>
+    <task id="LOCAL-00025" summary="requirements.txt update">
+      <created>1595785406482</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1595785406482</updated>
+    </task>
+    <task id="LOCAL-00026" summary="requirements.txt update">
+      <created>1595793875514</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1595793875515</updated>
+    </task>
+    <task id="LOCAL-00027" summary="requirements.txt update">
+      <created>1596235976859</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1596235976859</updated>
+    </task>
+    <task id="LOCAL-00028" summary="requirements.txt update">
+      <created>1596318705161</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1596318705161</updated>
+    </task>
+    <task id="LOCAL-00029" summary="requirements.txt update">
+      <created>1596323099230</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1596323099230</updated>
+    </task>
+    <task id="LOCAL-00030" summary="requirements.txt update">
+      <created>1596573528375</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1596573528376</updated>
+    </task>
+    <task id="LOCAL-00031" summary="requirements.txt update">
+      <created>1596573547178</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1596573547178</updated>
+    </task>
+    <task id="LOCAL-00032" summary="requirements.txt update">
+      <created>1596574338509</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1596574338509</updated>
+    </task>
+    <task id="LOCAL-00033" summary="requirements.txt update">
+      <created>1596574381407</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1596574381408</updated>
+    </task>
+    <task id="LOCAL-00034" summary="requirements.txt update">
+      <created>1596575054463</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1596575054463</updated>
+    </task>
+    <task id="LOCAL-00035" summary="requirements.txt update">
+      <created>1596575521496</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1596575521496</updated>
+    </task>
+    <task id="LOCAL-00036" summary="requirements.txt update">
+      <created>1596746045176</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1596746045176</updated>
+    </task>
+    <task id="LOCAL-00037" summary="requirements.txt update">
+      <created>1596746501683</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1596746501683</updated>
+    </task>
+    <task id="LOCAL-00038" summary="requirements.txt update">
+      <created>1596747180144</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1596747180144</updated>
+    </task>
+    <task id="LOCAL-00039" summary="requirements.txt update">
+      <created>1596750092660</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1596750092660</updated>
+    </task>
+    <task id="LOCAL-00040" summary="requirements.txt update">
+      <created>1599306503157</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1599306503158</updated>
+    </task>
+    <task id="LOCAL-00041" summary="requirements.txt update">
+      <created>1599321403028</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1599321403028</updated>
+    </task>
+    <task id="LOCAL-00042" summary="requirements.txt update">
+      <created>1602696287908</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1602696287908</updated>
+    </task>
+    <task id="LOCAL-00043" summary="requirements.txt update">
+      <created>1602696442473</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1602696442473</updated>
+    </task>
+    <task id="LOCAL-00044" summary="requirements.txt update">
+      <created>1602698501724</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1602698501724</updated>
+    </task>
+    <task id="LOCAL-00045" summary="requirements.txt update">
+      <created>1602705196591</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1602705196591</updated>
+    </task>
+    <task id="LOCAL-00046" summary="requirements.txt update">
+      <created>1602706370112</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1602706370112</updated>
+    </task>
+    <task id="LOCAL-00047" summary="requirements.txt update">
+      <created>1602715436363</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1602715436363</updated>
+    </task>
+    <task id="LOCAL-00048" summary="requirements.txt update">
+      <created>1602936879228</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1602936879228</updated>
+    </task>
+    <task id="LOCAL-00049" summary="requirements.txt update">
+      <created>1602938900787</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1602938900787</updated>
+    </task>
+    <task id="LOCAL-00050" summary="requirements.txt update">
+      <created>1602949954986</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1602949954986</updated>
+    </task>
+    <task id="LOCAL-00051" summary="requirements.txt update">
+      <created>1603499280418</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1603499280419</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$/donatrack" />
+    </ignored-roots>
+    <MESSAGE value="requirements.txt update" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Notifications" timestamp="1599306460437">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1599306460437" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603555463257">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1603555463257" />
+    <state x="407" y="145" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596745884859">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="407" y="145" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1596745884859" />
+    <state x="328" y="0" key="CommitChangelistDialog2" timestamp="1603499278897">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="328" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1603499278897" />
+    <state x="421" y="83" key="FileChooserDialogImpl" timestamp="1599321249552">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="83" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599321249552" />
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1603542980180">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603542980180" />
+    <state width="1259" height="125" key="GridCell.Tab.0.center" timestamp="1603542980179">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="125" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603542980179" />
+    <state width="1259" height="125" key="GridCell.Tab.0.left" timestamp="1603542980178">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="125" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603542980178" />
+    <state width="1259" height="125" key="GridCell.Tab.0.right" timestamp="1603542980180">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603542980180" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1603642048542">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603642048542" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1603499254017">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1603499254017" />
+    <state x="362" y="139" width="457" height="232" key="com.intellij.ide.util.TipDialog" timestamp="1603496128779">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="362" y="139" width="457" height="232" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1603496128779" />
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599321376682">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1599321376682" />
+    <state x="0" y="0" width="612" height="680" key="find.popup" timestamp="1596235781664">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" width="612" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1596235781664" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1595797949304">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595797949304" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>2313</line>
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1302</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1283</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>3157</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/models.py</url>
+          <line>548</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/models.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>226</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>566</line>
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>507</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>711</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1481</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>2385</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>455</line>
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>3244</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1898</line>
+          <option name="timeStamp" value="218" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1856</line>
+          <option name="timeStamp" value="221" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/routes.py</url>
+          <line>1714</line>
+          <option name="timeStamp" value="223" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="form" language="Python" />
+        <watch expression="family_choice[0][0]" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

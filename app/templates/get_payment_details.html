@@ -1,0 +1,39 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+     <h4>Delete Donation Payments</h4>
+
+        <div class="form-group">
+
+            <table border="0" style="border-collapse: separate; border-spacing: 10px;" >
+                <tr>
+                     {{ form.hidden_tag() }}
+                <tr>
+                    <th >{{ form.requiredbx.label }}  </th>
+                    <td>
+                        {{ form.requiredbx() }}
+                          {% for error in form.requiredbx.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center" colspan="2">
+                    {{ form.submit() }}
+                    {{ form.cancel() }}
+                    {{ form.close() }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

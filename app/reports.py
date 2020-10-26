@@ -1,0 +1,307 @@
+import sqlite3
+import psycopg2
+from time import strftime
+from datetime import datetime
+from app import app, constants
+from psycopg2 import sql
+
+
+
+def db_connection():
+    sqlite_file = app.config['SQLITE_PATH']
+    conn = sqlite3.connect(sqlite_file)
+    cursor = conn.cursor()
+    return cursor
+
+
+
+def db_conn_only():
+    try:
+        ENV = 'prod'
+
+        if ENV == 'dev':
+            conn = psycopg2.connect(user="db_donatrack", password="123456", host="127.0.0.1", port="5432",
+                                    database="donatrack_web")
+        else:
+            database_url = app.config['SQLALCHEMY_DATABASE_URI']
+            conn = psycopg2.connect(database_url, sslmode='require')
+
+        return conn
+
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+
+
+#     #print(app.config['SQLITE_PATH'])
+#     sqlite_file = app.config['SQLITE_PATH']
+#     conn = sqlite3.connect(sqlite_file)
+
+
+
+class MemberDonationRpt(object):
+    """List of payment for a category for a member
+
+    Class Name:
+    List of payment for a category for a member
+
+    Description:
+    List the payments made by a member for a particular  a category of donation
+    and statment of account
+
+    Modules:
+    list_payments : list the payments
+    stmt_of_acct : sums total paid and  calculates outstanding
+
+    Parameter:
+    donation_id : the  id that uniquely identifies the member's donation
+
+    """
+
+    def __init__(self, **kwargs):
+        self.donation_id = kwargs.get('donation_id')
+        self.member_id = kwargs.get('member_id')
+        self.report_name = ""
+
+    def list_payments(self):
+        stmt = """SELECT typeofdonation.type_description AS [Donation Name], 
+                     "strftime('%d-%m-%Y',donationtrail.payment_date) AS Date, donationtrail.amount AS Paid,
+                           donationtrail.payment_details,
+                           donationtrail.donation_type_ID,
+                           members.member_Firstname AS Firstname,
+                           members.member_lastname AS Surname,
+                           members.member_phone_no AS [Mobile No.]
+                     FROM donationtrail,
+                           typeofdonation,
+                           members,
+                           donations
+                     WHERE donationtrail.donation_id = donations.donation_id AND
+                           donationtrail.donation_type_id = typeofdonation.type_code AND
+                           members.member_id = donations.member_id AND 
+                           donations.donation_id = '""" + self.donation_id + """';"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        report_name = "List Member Payments"
+        return query_stmt, report_name
+
+    def stmt_of_acct(self):
+        stmt = """SELECT typeofdonation.type_description AS [Donation Name],
+                           sum(donationtrail.amount) AS Paid,
+                           donations.amount AS Pledged,
+                           sum(donationtrail.amount) - donations.amount AS Outstanding,
+                           donation_type_ID,
+                           members.member_Firstname AS Firstname,
+                           members.member_lastname AS Surname,
+                           members.member_phone_no AS [Mobile No.]
+                      FROM donationtrail,
+                           typeofdonation,
+                           members,
+                           donations
+                     WHERE donationtrail.donation_id = donations.donation_id AND
+                           donationtrail.donation_type_id = typeofdonation.type_code AND 
+                           members.member_id = donations.member_id AND 
+                           donations.donation_id = '""" + self.donation_id + """';"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        report_name = "Sum of Payments"
+        return query_stmt, report_name
+
+    def member_stmt_of_acct(self):
+        stmt = """SELECT typeofdonation.type_description AS [Donation Name],
+                           sum(donationtrail.amount) AS Paid,
+                           donations.amount AS Pledged,
+                           sum(donationtrail.amount) - donations.amount AS Outstanding,
+                           donation_type_ID,
+                           members.member_Firstname AS Firstname,
+                           members.member_lastname AS Surname,
+                           members.member_phone_no AS [Mobile No.]
+                      FROM donationtrail,
+                           typeofdonation,
+                           members,
+                           donations
+                     WHERE donationtrail.donation_id = donations.donation_id AND
+                           donationtrail.donation_type_id = typeofdonation.type_code AND 
+                           members.member_id = donations.member_id AND 
+                           Members.member_id  '""" + self.member_id + """';"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        report_name = "Member All Donation Summary"
+        return query_stmt, report_name
+
+
+class DonationCategoryRpt(object):
+    def __init__(self, **kwargs):
+        self.donation_type_id = kwargs.get("donation_type_id")
+        self.start_date = kwargs.get("start_date")
+        self.end_date = kwargs.get("end_date")
+        self.start_amount = kwargs.get("start_amount")
+        self.end_amount = kwargs.get("end_amount")
+        self.report_names = ""
+
+
+    def category_transaction(self):
+        stmt =  """SELECT 
+                    (SELECT TypeOfDonation.type_description
+                        FROM TypeOfDonation 
+                        WHERE TypeOfDonation.type_code = donations.donation_type_id) AS [Donation Name], 
+                    strftime('%d-%m-%Y', Donationtrail.payment_date) AS Date, 
+                    donations.amount AS [Amount Pledged],
+                            (SELECT IFNULL(sum(Donationtrail.amount), 0) 
+                                  FROM Donationtrail 
+                                  WHERE Donationtrail.donation_id = donations.donation_id) AS [Amount Redeemed], 
+                            (SELECT IFNULL(sum(Donationtrail.amount), 0) - Donations.amount 
+                                  FROM Donationtrail 
+                                 WHERE Donationtrail.donation_id = donations.donation_id) AS [ Balance], 
+                            Members.member_lastname AS Surname, 
+                            Members.member_firstname AS FirstName, 
+                            Members.member_phone_no AS [Mobile No.] 
+                       FROM members, 
+                            donations,
+                            donationtrail 
+                      WHERE Donations.member_id = Members.member_id AND  
+                            Donations.donation_type_id = '""" + self.donation_type_id + """' 
+                      GROUP BY Members.member_id
+                      ORDER BY Date(donations.donation_date) DESC;"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        report_name = "Donation Category Summary"
+        return query_stmt, report_name
+
+    def donation_by_date_range(self):
+
+        stmt = """SELECT Members.member_lastname AS LastName,
+                           Members.member_firstname AS FirstName,
+                           strftime('%d-%m-%Y',(Donations.donation_date)) AS Date,
+                           Donations.donation_id AS [Donation ID],
+                           (SELECT TypeOfDonation.type_description
+                                 FROM TypeOfDonation
+                                WHERE TypeOfDonation.type_code = donations.donation_type_id)
+                           AS [Donation Name],
+                           printf("%.2f",donations.amount) AS Amount
+                      FROM members,
+                           donations
+                     WHERE (Date(donations.donation_date) BETWEEN '""" + self.start_date + """' AND '""" + self.end_date + """')
+                      AND  Donations.member_id = Members.member_id
+                     ORDER BY Date(donations.donation_date) ASC;"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        #converting string to date format and reformating to specific date
+        start_date = datetime.strptime(self.start_date, '%Y-%m-%d').strftime('%d-%m-%Y')
+        end_date = datetime.strptime(self.end_date, '%Y-%m-%d').strftime('%d-%m-%Y')
+        report_name = "Donations Between " + start_date + " AND " + end_date
+        return query_stmt, report_name
+
+    def range_by_amount_pledged(self):
+        stmt = """SELECT Members.member_lastname AS Surname,
+                           Members.member_firstname AS Firstname,
+                           (SELECT TypeOfDonation.type_description
+                                 FROM TypeOfDonation
+                                WHERE TypeOfDonation.type_code = donations.donation_type_id)
+                           AS [Donation Name],
+                           donations.amount AS [Amount Pledged]
+                      FROM members,
+                           donations
+                     WHERE (donations.amount BETWEEN """ + self.start_amount + """ AND """ + self.end_amount + """) 
+                     AND Members.member_id = Donations.member_id
+                     order by Members.member_id;"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        start_amount = "{0:,.2f}".format(float(self.start_amount))
+        end_amount = "{0:,.2f}".format(float(self.end_amount))
+        report_name = "Pledges in the range of {} and {} ".format(start_amount, end_amount)
+        return query_stmt, report_name
+
+    def range_by_amount_redeemed(self):
+        stmt = """select *from
+                            (SELECT Members.member_lastname AS Surname,
+                                   Members.member_firstname AS Firstname,
+                                   (
+                                       SELECT TypeOfDonation.type_description
+                                       FROM TypeOfDonation
+                                        WHERE TypeOfDonation.type_code = donations.donation_type_id
+                                   )
+                                   AS [Donation Name],
+                                   (
+                                       SELECT printf("%.2f", sum(Donationtrail.amount) ) 
+                                        FROM Donationtrail
+                                        WHERE Donationtrail.donation_id = donations.donation_id
+                                        GROUP BY donation_type_id
+                                       HAVING sum(amount) BETWEEN """ + self.start_amount + """ AND """ + self.end_amount + """)
+                                   AS [ Amount Redeemed]
+                              FROM Members,
+                                   Donations,
+                                   Donationtrail
+                             WHERE Members.member_id = Donations.member_id 
+                             AND   Donationtrail.donation_id = Donations.donation_id
+                             AND      Donationtrail.donation_type_id  = Donations.donation_type_id
+                             GROUP BY Donationtrail.donation_type_id)
+                             
+                            where [ Amount Redeemed] NOT NULL"""
+        query_stmt = (stmt.replace('"""', '').replace('\n', "")).strip()
+        start_amount = "{0:,.2f}".format(float(self.start_amount))
+        end_amount = "{0:,.2f}".format(float(self.end_amount))
+        report_name = 'Redeemed Amount in the range of {} and {}'.format(start_amount, end_amount)
+        return query_stmt, report_name
+
+    def range_by_amount_redeemed_category(self):
+        stmt =  """select *from
+    (SELECT Members.member_lastname AS Surname,
+           Members.member_firstname AS Firstname,
+           (
+               SELECT TypeOfDonation.type_description
+               FROM TypeOfDonation
+                WHERE TypeOfDonation.type_code = donations.donation_type_id
+           )
+           AS [Donation Name],
+           (
+               SELECT printf("%.2f", sum(Donationtrail.amount) ) 
+                FROM Donationtrail
+                WHERE Donationtrail.donation_id = donations.donation_id
+                GROUP BY donation_type_id
+               HAVING sum(amount) BETWEEN 10000  AND 2000000       )
+           AS [ Amount Redeemed]
+      FROM Members,
+           Donations,
+           Donationtrail
+     WHERE Members.member_id = Donations.member_id 
+     AND   Donationtrail.donation_id = Donations.donation_id
+     AND      Donationtrail.donation_type_id  ='CRG'
+     GROUP BY Donationtrail.donation_type_id)
+
+    where [ Amount Redeemed] NOT NULL"""
+
+
+    def test_from_db(self):
+        qry = "=" + 'PR-10'
+        stat = """
+                SELECT typeofdonation.type_description AS [Donation Name],
+                       Donationtrail.donation_type_ID AS [Donation Code],
+                       strftime('%d-%m-%Y', Donationtrail.payment_date) AS Date,
+                       Donationtrail.amount AS Paid,
+                       Donationtrail.payment_details,   
+
+                       Members.member_Firstname AS Firstname,
+                       Members.member_lastname AS Surname,
+                       Members.member_phone_no AS [Mobile No.]
+                FROM   Donationtrail,
+                       TypeOfDonation,
+                       Members,
+                       Donations
+                WHERE   Donationtrail.donation_id = Donations.donation_id 
+                AND     Donationtrail.donation_type_id = TypeOfDonation.type_code 
+                AND     Members.member_id = Monations.member_id 
+                AND     Donations.donation_id = '{}';
+        """.format('egegegeg')
+        check = constants.eq + 'PR'
+        return check
+
+
+"""SELECT typeofdonation.type_description AS [Donation Name],
+Donations.donation_type_ID AS [Donation Code], 
+Donations.amount AS Pledged, IFNULL(sum(donationtrail.amount), 0) AS Paid,   
+ IFNULL((sum(donationtrail.amount) - donations.amount),0) AS Outstanding, 
+members.member_Firstname AS Firstname, members.member_lastname AS Surname, 
+members.member_phone_no AS [Mobile No] 
+FROM  Donations
+OUTER LEFT JOIN donationtrail ON  donationtrail.donation_id = donations.donation_id
+OUTER LEFT JOIN typeofdonation On typeofdonation.type_code = donations.donation_type_id 
+OUTER LEFT JOIN  members ON members.member_id = donations.member_id
+WHERE  strftime('%Y', Donations.donation_date)= '2018'
+AND Donations.payment_status = 0
+group by members.member_id 
+order by members.member_id;"""
+
+

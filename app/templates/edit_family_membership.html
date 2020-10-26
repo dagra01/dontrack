@@ -1,0 +1,71 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+            <h3> Edit Family Membership</h3>
+            <table border="0" style="border-collapse: separate; border-spacing: 5px;">
+                 <tr>
+                    <th>{{ form.family_id.label }}</th>
+                    <td>
+                        {{ form.family_id() }}
+                        {% for error in form.family_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    {{ form.hidden_tag() }}
+                <tr>
+                    <th>{{ form.family_name.label }}</th>
+                    <td>
+                        {{ form.family_name() }}
+                        {% for error in form.family_name.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+                </tr>
+
+                <tr><th>{{ form.family_member_name.label }}</th>
+                    <td>
+                        {{ form.family_member_name( readonly=True) }}
+                        {% for error in form.family_name.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                 <tr class="form-group">
+                    <th>{{ form.relation_id.label }}</th>
+                    <td>
+                        {{ form.relation_id() }}
+                        {% for error in form.relation_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+
+
+                <tr>
+                    <td align="center" colspan="2">
+                        {{ ctr.cancel }}
+                        {{ ctr.update}}
+                        {{ ctr.delete}}
+                        {{ ctr.close }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

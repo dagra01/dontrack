@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="timestamp">
+    <title>Dontrack Applications</title>
+
+    {% include 'html_dependencies.html' %}
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+
+   {% if current_user.is_anonymous %}
+    <h3 align="center">Dontrack Applications</h3>
+    {% endif %}
+    {% if not current_user.is_anonymous %}
+    <h5 align="center">Dontrack Applications</h5>
+
+    <hr class="divider">
+
+    {% if current_user.member_firstname %}
+        Logged in: {{ current_user.member_id }}({{ current_user.member_firstname }}, {{ current_user.member_lastname }})
+    {% else %}
+         Logged in: {{ current_user.username }}
+    {% endif %}
+
+
+
+
+     <div class="container">
+     <ul class="nav nav-pills">
+   <!--<li ><a  href="/" title="Home">Pricing</a></li> -->
+         <a class="dropdown pull-right" href="{{ url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Membership<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Member</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('member') }}"><span class="glyphicon glyphicon-user"></span> Add Member</a></li>
+            <li><a href="{{ url_for('search', module='Member') }}">Edit Details</a></li>
+            <li><a href="{{ url_for('last_number') }}">Get Last Member ID</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Group</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('add_group_member') }}">Add Member To Group</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Family</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('add_family_member') }}">Add Member To Family</a></li>
+            <li><a href="{{ url_for('get_family_id') }}">Get Family Members</a></li>
+
+        </ul>
+    </li>
+
+
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Donations and Payments<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('donations') }}">Enter Donation</a></li>
+             <li><a href="{{ url_for('search', module='Add Donation') }}">Search</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Payments</strong></li>
+            <li><a href="{{ url_for('search', module='Donation') }}">Pledge Redemption</a></li>
+
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Reports<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+             <li><a href="{{ url_for('generate_report') }}">Run a Report</a></li>
+
+        </ul>
+    </li>
+
+     {% if current_user.admin %}
+
+    <li class="dropdown pull-right">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>User Management</strong></li>
+            <li class="divider"></li>
+             <li><a href="{{ url_for('adduser')}}">Add user account</a></li>
+            <li><a href="{{ url_for('list_users') }}">View/Edit System Users</a></li>
+           <!--<li><a href="{{ url_for('edit_user')}}">Edit User account</a></li>-->
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Upload<span class="glyphicon glyphicon-upload"></span></strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('upload') }}">Members data</a></li>
+            <li><a href="{{ url_for('upload_group_membership') }}">Group Membership</a></li>
+            <li><a href="{{ url_for('upload_donation') }}">Donations</a></li>
+             {% if current_user.su %}
+             <li><a href="{{ url_for('load_data') }}">Load Data</a></li>
+            {% endif %}
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Manage</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('member_settings') }}">settings</a></li>
+            <li><a href="{{ url_for('search', module='Donation') }}">Update Donations</a></li>
+            <li><a href="{{ url_for('edit_payment_details') }}">Delete payments</a></li>
+            <li><a href="{{ url_for('donatrack_validate') }}">License</a></li>
+
+
+        </ul>
+    </li>
+
+
+         <li class="dropdown pull-right">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Backup/Restore<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Backup</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('backup') }}">Backup</a></li>
+            <li><a href="{{ url_for('export_backup') }}">Export</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Restore</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('restore') }}">Restore</a></li>
+            <li><a href="{{ url_for('import_backup') }}">Import</a></li>
+            </ul>
+         </li>
+
+
+
+    {% endif %}
+
+
+
+
+
+         <li class="dropdown pull-right">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Downloads<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+            <li><a href="{{ url_for('template', filename='member.xlsx') }}">Members Templates</a></li>
+            <li><a href="{{ url_for('template', filename='donation.xlsx') }}">Donation Templates</a></li>
+                 <li><a href="{{ url_for('template', filename='group.xlsx') }}">Group Templates</a></li>
+            </ul>
+         </li>
+
+
+
+
+    <li class="dropdown pull-right">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Setup<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><strong><span>&nbsp</span>Setup</strong></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('listtypedonation') }}">Type of Donation</a></li>
+            <li><a href="{{ url_for('listmodedonation') }}">Mode of Donation</a></li>
+            <li><a href="{{ url_for('listmoderedemption') }}">Mode of Redemption  </a></li>
+            <li><a href="{{ url_for('listmembertype') }}">Member Type</a></li>
+            <li><a href="{{ url_for('listgrouptype') }}">Group</a></li>
+            <li><a href="{{ url_for('ownerdetails') }}">Organization Details</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('change_password')}}">Change Password</a></li>
+            <li class="divider"></li>
+            <!--<li><a href="#">Initialize Church Account</a></li>-->
+           <!-- <li class="divider"></li>
+            <li><a href="{{ url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>-->
+
+
+
+
+            {% else %}
+
+
+            {% endif %}
+
+
+
+
+
+
+         </ul> <!---- Admin -->
+
+
+    <!--<li class="dropdown pull-right">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+             <li><a href="{{ url_for('adduser')}}">Add user account</a></li>
+            <li><a href="{{ url_for('edit_user')}}">Edit User account</a></li>
+            <li><a href="{{ url_for('change_password')}}">Change Password</a></li>
+
+        </ul>
+    </li>-->
+
+
+
+    </li>
+</ul>
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="content container">
+
+    {% block content %}
+
+    {% endblock %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div align="center" class="alert alert-info" role="alert">
+            <ul>
+                {% for  message in messages %}
+                <h6 class="alert-heading">
+                {{ message }}</h6>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+</div>
+
+</body>
+</html>

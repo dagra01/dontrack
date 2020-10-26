@@ -1,0 +1,45 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+    <div class="page-header">
+        <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+});
+</script>
+        <h1>
+            <small>
+               {{ title }}
+            </small>
+        </h1>
+    </div>
+    <div class="table-responsive-sm">
+        <input id="myInput" type="text" placeholder="Search..">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            {% for member in result %}
+                <tr>
+                    <td>
+                        <a  class="alert-link" href="{{ url_for('donations', mid=member.member_id) }}">
+                            {{  member.member_firstname}} {{  member.member_lastname}}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <a class="btn btn-success" href="{{ url_for('search', module=module) }}">Close</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            <small>
+                 {{ title }}
+            </small>
+        </h1>
+    </div>
+    <div class="alert alert-primary" role="alert">
+        {% for mode in list_mod %}
+        {% if current_user.admin %}
+        <a  class="alert-link" href="{{ url_for('get_type_donation_details', id= mode.type_id) }}"><p>{{ mode.type_description}}</p>
+        </a>
+        {% else %}
+        <p>{{ mode.type_description}}</p>
+         {% endif %}
+        {% endfor %}
+    </div>
+        {% if current_user.admin %}
+        <a class="btn btn-success" href="{{ url_for('typeofdonation') }}">New Donation Type</a>
+        {% endif %}
+      <a class="btn btn-success" href="{{ url_for('index') }}">Close</a>
+{% endblock %}

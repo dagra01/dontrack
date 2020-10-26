@@ -1,0 +1,30 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="10">
+            <item index="0" class="java.lang.String" itemvalue="cssselect2" />
+            <item index="1" class="java.lang.String" itemvalue="html5lib" />
+            <item index="2" class="java.lang.String" itemvalue="cairocffi" />
+            <item index="3" class="java.lang.String" itemvalue="tinycss" />
+            <item index="4" class="java.lang.String" itemvalue="cffi" />
+            <item index="5" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="6" class="java.lang.String" itemvalue="pycparser" />
+            <item index="7" class="java.lang.String" itemvalue="Pyphen" />
+            <item index="8" class="java.lang.String" itemvalue="tinycss2" />
+            <item index="9" class="java.lang.String" itemvalue="pdfrw" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="app.models.chardet" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

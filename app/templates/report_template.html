@@ -1,0 +1,313 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function()
+{
+
+    // jQuery selection for the 2 select boxes
+    var dropdown = {
+        report_name: $('#report_name'),
+        filter_field: $('#filter_field')
+
+
+    };
+
+    // call to update on load
+    updateCounties();
+
+    // function to call XHR and update county dropdown
+    function updateCounties() {
+        var send = {
+            report_id: dropdown.report_name.val()
+        };
+        dropdown.filter_field.attr('disabled', 'disabled');
+        dropdown.filter_field.empty();
+        $.getJSON("{{ url_for('get_filterfield') }}", send, function(data) {
+            data.forEach(function(item) {
+                dropdown.filter_field.append(
+                    $('<option>', {
+                        value: item[0],
+                        text: item[1]
+                    })
+                );
+            });
+            dropdown.filter_field.removeAttr('disabled');
+            document.getElementById("filter_field").click();
+
+        });
+    }
+
+    // event listener to state dropdown change
+    dropdown.report_name.on('change', function() {
+        //alert("Hello");
+        updateCounties();
+    });
+
+});
+
+</script>
+
+
+
+<script>
+$(function()
+{
+
+    // jQuery selection for the 2 select boxes
+    var dropdown = {
+
+        filter_field: $('#filter_field'),
+        filter: $('#filter')
+    };
+
+    // call to update on load
+    // updatefilterfield();
+
+    // function to call XHR and update county dropdown
+    function updatefilterfield() {
+        var send = {
+            field_id: dropdown.filter_field.val()
+        };
+        dropdown.filter.attr('disabled', 'disabled');
+        dropdown.filter.empty();
+        $.getJSON("{{ url_for('get_filterlogic') }}", send, function(data) {
+            data.forEach(function(item) {
+                dropdown.filter.append(
+                    $('<option>', {
+                        value: item[0],
+                        text: item[1]
+                    })
+                );
+            });
+            dropdown.filter.removeAttr('disabled');
+
+        });
+    }
+
+      // event listener to state dropdown change
+    dropdown.filter_field.on('change', function()
+         {
+            updatefilterfield();
+
+            selected = $(this).text();
+             if( selected.indexOf('Date') >= 0 )
+                {
+                  //   alert(selected );
+                }
+
+         });
+
+    dropdown.filter_field.on('click', function()
+        {
+            updatefilterfield();
+
+        });
+
+       // dropdown.filter.on('click', function()
+      //  {
+       //     selected = $(this).text();
+       //     fld = document.getElementById("filter_field").val()
+
+        //    if( selected.indexOf('Equal') >= 0 )
+         //       {
+         //            alert(selected );
+           //     }
+        //});
+
+
+
+});
+
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+    $("#filter").change(function(){
+         var selected = $(this).val();
+         var x = document.getElementById("filter_field");
+
+           y = x.options[x.selectedIndex].text;
+           // alert(y);
+            is_date = y.indexOf('Date') >= 0;
+            ctr_show = 2;
+
+            if (selected !="btw"){
+            var not_btw = true; }
+
+           if (selected =="btw" && y=="Amount")
+            {
+                ctr_show = 0;
+            }
+
+
+        if (selected =="btw" && is_date==true)
+            {
+               //  $('#start_field').hide();
+               // $('#end_field').hide();
+              // alert(is_date)
+               ctr_show = 1;
+            }
+
+        if (not_btw && y=="Amount")
+            {
+                ctr_show = 2;
+            }
+
+         if (not_btw && is_date==true)
+            {
+                ctr_show = 3;
+               // alert(selected);
+            }
+
+
+        switch(ctr_show) {
+            case 0:
+                $('#start_field').show();
+                $('#end_field').show();
+                $('#start_date').hide();
+                $('#end_date').hide();
+                break;
+            case 1:
+                  $('#start_date').show();
+                  $('#end_date').show();
+                  $('#start_field').hide();
+                  $('#end_field').hide();
+                break;
+            case 2:
+                $('#start_date').hide();
+                $('#end_date').hide();
+                $('#start_field').show();
+                $('#end_field').hide();
+                break;
+
+            case 3:
+                $('#start_date').show();
+                $('#end_date').hide();
+                $('#start_field').hide();
+                $('#end_field').hide();
+                break;
+
+            default:
+                $('#start_date').hide();
+                $('#end_date').hide();
+                $('#start_field').show();
+                $('#end_field').hide();
+        }
+
+
+    });
+
+
+
+
+
+
+
+});
+</script>
+
+<script>
+   $(document).ready(function(){
+        $("#filter_field").click(function(){
+         var selected = $(this).text();
+         var x = document.getElementById("filter_field");
+
+           y = x.options[x.selectedIndex].text;
+            //alert(y);
+        if (selected.indexOf('Date') >= 0 )
+            {
+                $('#start_date').show();
+                $('#end_date').hide();
+                $('#start_field').hide();
+                $('#end_field').hide();
+            }
+        else
+            {
+                $('#start_date').hide();
+                $('#end_date').hide();
+                $('#end_field').hide();
+                $('#start_field').show();
+
+            }
+
+    });
+
+ });
+</script>
+
+
+
+<form action="{{url_for('generate_report')}}" name="PickCounty" method="post">
+<div class="form-size" align="center" class="jumbotron">
+<table border="0" style="width:50%">
+     {{ form.hidden_tag() }}
+  <tr>
+    <th colspan="2">Report Name</th>
+  </tr>
+  <tr>
+    <td colspan="2">
+        {{ form.report_name() }}
+    </td>
+
+  </tr>
+  <tr>
+    <td colspan="2">
+        {{ form.filter_field () }}
+    </td>
+  </tr>
+  <tr>
+    <td align="left" rowspan="3">
+        {{ form.filter() }}
+    </td>
+  </tr>
+  <tr>
+
+    <td colspan="2" align="right">
+        {{ form.start_field()}}
+        {% for error in form.start_field.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+        
+        {{ form.start_date()}}
+        {% for error in form.start_date.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+        <!-- <input type="text" id="start_field"  size="16" /> 
+        <input type="date" id="start_date" style="display: none;" size="15"/>-->
+    </td>
+  </tr>
+   <tr>
+    <td colspan="2" align="right">
+        {{ form.end_field()}}
+        {% for error in form.end_field.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+         {{ form.end_date()}}
+        {% for error in form.end_date.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+      <!--  <input type="text" id="end_field" style="display: none;" size="16" /> 
+       <input type="date" id="end_date" style="display: none;" size="15" />-->
+    </td>
+
+  </tr>
+    <tr>
+        <td colspan="2">
+           {{ ctr.submit() }} {{ctr.cancel()}}
+            <input type="button" onclick="" value="Click Me!">
+            <a href="{{url_for('index')}}">Report</a>
+
+        </td>
+    </tr>
+</table>
+
+</div>
+</form>
+
+
+
+
+{% endblock %}

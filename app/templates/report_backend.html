@@ -1,0 +1,111 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="{{url_for('report_backend')}}" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+
+            <table style="border-collapse: separate; border-spacing: 5px;" >
+
+
+
+
+
+                <tr>
+                     {{ form.hidden_tag() }}
+                    <th>{{ form.report_id.label }}</th>
+                    <td>
+                        {{ form.report_id() }}
+                          {% for error in form.report_id.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{ form.report_name.label }}</th>
+                    <td>
+                        {{ form.report_name() }}
+                         {% for error in form.report_name.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.report_header.label }}</th>
+                    <td>
+                        {{ form.report_header() }}
+                         {% for error in form.report_header.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.query_stmt.label }}</th>
+                    <td>
+                        {{ form.query_stmt(rows='10',cols='30') }}
+                         {% for error in form.query_stmt.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>{{ form.field_id.label }}</th>
+                    <td>
+                        {{ form.field_id() }}
+                          {% for error in form.field_id.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{ form.filter_field.label }}</th>
+                    <td>
+                        {{ form.filter_field() }}
+                           {% for error in form.filter_field.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{ form.filter_header.label }}</th>
+                    <td>
+                           {{ form.filter_header() }}
+                           {% for error in form.filter_field.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th valign="top">{{ form.action.label }}</th>
+                    <td>
+                          {{ form.action() }}
+                           {% for error in form.action.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}</td>
+                </tr>
+
+                <tr>
+                    <td align="center" colspan="2">
+                        {{ ctr.submit}}
+                        {{ ctr.cancel }}
+                         {{ ctr.close }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

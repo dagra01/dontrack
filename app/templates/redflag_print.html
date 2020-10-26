@@ -1,0 +1,69 @@
+{% block content %}
+<style>
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    text-align: left;
+}
+
+</style>
+
+<div align="center" >
+    <h3>Red Flag Report </h3>
+    {% if  donation_name %}
+    <h5>{{donation_name}}{% endif %} </h5>
+   {% if  donation_year %}
+    <h4> Year: {{donation_year}}{% endif %} </h4>
+    <h6>Printed : {{ print_time }} </h6>
+
+    <table width="100%" align="center" >
+        <thead style="font-size:13px;">
+        <tr align="left">
+
+            <th class="col-1">Member Name</th>
+            <th class="col-2">No. Of Donations Made</th>
+            <th class="col-2">Total Pledge</th>
+            <th class="col-2">Total Paid</th>
+            <th class="col-2">% Redeemed</th>
+            <th class="col-2">Red Flag</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody >
+              {% if result|length > 0 %}
+
+        {% for detail in result %}
+
+
+
+        <tr>
+
+            <td>{{ detail[0] }} </td> <td>{{ detail[1] }}</td> <td>{{ detail[2] }}
+            </td><td>{{ detail[3] }}</td> <td> {{ detail[4] }}%</td> <td>  {% if detail[5] == 'RED FLAG' %}
+                <font color="red">* </font>
+                {% endif %}
+
+            </td>
+        </tr>
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+</div>
+
+
+<!--<a class="btn btn-info" href="{{ url_for('download', id=result[0].donation_id) }}">Download</a>-->
+{% endblock %}

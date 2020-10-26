@@ -1,0 +1,61 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+            <h3> Group Membership</h3>
+            <table border="0" style="border-collapse: separate; border-spacing: 5px;" >
+                <tr>
+                     {{ form.hidden_tag() }}
+                <tr>
+                    <th >{{ form.member_id.label }} </th>
+                    <td>
+
+                        {% if current_user.member_firstname %}
+                             {{ form.member_id(readonly="True") }}  {{ form.member_name(readonly="True") }}
+                             {% for error in form.member_id.errors %}
+               		        <span style="color: red">[{{ error }}]</span>
+            		        {% endfor %}
+                        {% else %}
+                          {{ form.member_id() }}  {{ form.member_name(readonly="True") }}
+                          {% for error in form.member_id.errors %}
+               		         <span style="color: red">[{{ error }}]</span>
+            		        {% endfor %}
+
+                       {% endif %}
+
+                    </td>
+                </tr>
+                <tr>
+                    <hr>
+                   <th valign="top">&nbsp;</th><!-- {{ form.group.label }}-->
+                    <td> {{form.get_group }}</td>
+                </tr>
+                <tr style="font-size:11px;">
+                   <td colspan="2">
+                       <hr>
+                          {{ form.group() }}
+                           {% for error in form.group.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}</td>
+                </tr>
+
+                <tr>
+                    <td align="center" colspan="2">
+                        {{ ctr.submit}}
+                        {{ ctr.cancel }}
+                         {{ ctr.close }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

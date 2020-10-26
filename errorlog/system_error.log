@@ -1,0 +1,62 @@
+2020-10-17 14:16:32 ERROR    Exception on /upload_donation [POST]
+Traceback (most recent call last):
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "payment_type_id" of relation "Donations" does not exist
+LINE 1: ...mber_id, donation_date, amount, donation_mode_id, payment_ty...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Apps\gitrepo\donatrack_web\app\routes.py", line 1748, in upload_donation
+    index=False)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\pandas\core\generic.py", line 2127, in to_sql
+    dtype=dtype)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\pandas\io\sql.py", line 450, in to_sql
+    chunksize=chunksize, dtype=dtype)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\pandas\io\sql.py", line 1127, in to_sql
+    table.insert(chunksize)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\pandas\io\sql.py", line 641, in insert
+    self._execute_insert(conn, keys, chunk_iter)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\pandas\io\sql.py", line 616, in _execute_insert
+    conn.execute(self.insert_statement(), data)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
+    context)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "C:\Users\okechukwu.oha\PycharmProjects\Donatrack\venv\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "payment_type_id" of relation "Donations" does not exist
+LINE 1: ...mber_id, donation_date, amount, donation_mode_id, payment_ty...
+                                                             ^
+ [SQL: 'INSERT INTO public."Donations" (donation_id, donation_type_id, member_id, donation_date, amount, donation_mode_id, payment_type_id, comment) VALUES (%(donation_id)s, %(donation_type_id)s, %(member_id)s, %(donation_date)s, %(amount)s, %(donation_mode_id)s, %(payment_type_id)s, %(comment)s)'] [parameters: {'donation_id': 'HFO-2015-STC00001', 'donation_type_id': 'HFO-2015', 'member_id': 'STC00001', 'donation_date': datetime.datetime(2015, 6, 19, 0, 0), 'amount': 50000.0, 'donation_mode_id': 'PL', 'payment_type_id': 0.0, 'comment': 'CQ'}] (Background on this error at: http://sqlalche.me/e/f405)

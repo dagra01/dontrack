@@ -1,0 +1,15 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% block content %}
+<div class="jumbotron">
+  <h3 class="display-4"></h3>
+  <h2 align="center" class="display-4"><strong><font color="gold">DonaTrack</font></strong></h2>
+  <p align="center" class="lead">Donation Tracking and Analysis Application.</p>
+    <hr class="my-4">
+  <p align="center"><a class="btn btn-primary btn-lg" href="#" role="button">Track and Analyze</a></p>
+   <!--<a class="dropdown pull-right" href="{{ url_for('shutdown')}}"><span class="glyphicon glyphicon-log-out"></span>Close Application</a>-->
+
+</div>
+<a class="dropdown pull-left" href="{{ url_for('support')}}"><span class="glyphicon glyphicon-info-sign"></span>Contact Support</a>
+<a class="dropdown pull-right" href="{{ url_for('shutdown')}}"><span class="glyphicon glyphicon-log-out"></span>Close Application</a>
+{% endblock %}

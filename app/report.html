@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>change demo</title>
+  <style>
+  div {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div></div>
+<div>
+
+</div>
+{{ form.group_id()}}
+
+    <select id="report" >
+    <option value="qt">=</option>
+    <option value="gt">Greater Than (>)</option>
+    <option value="gte">Greater or Equal (>=)</option>
+    <option value="lt">Less Than (<)</option>
+    <option value="lte">Less or Equal (<=)</option>
+    <option value="btw_amt">BETWEEN(Amount)</option>
+    <option value="btw_date">BETWEEN(Date)</option>
+
+    </select>
+
+    <select id="sel" >
+    <option value="qt">=</option>
+    <option value="gt">Greater Than (>)</option>
+    <option value="gte">Greater or Equal (>=)</option>
+    <option value="lt">Less Than (<)</option>
+    <option value="lte">Less or Equal (<=)</option>
+    <option value="btw_amt">BETWEEN(Amount)</option>
+    <option value="btw_date">BETWEEN(Date)</option>
+
+    </select>
+
+    <input type="text" id="tx-0" style="display: none;" />
+    <input type="text" id="tx-1" style="display: none;" />
+    <input type="text" id="tx-2" />
+    <input type="date" id="dt-1" style="display: none;"/>
+    <input type="date" id="dt-0" style="display: none;"/>
+
+
+<div id="ff"> </div>
+    <input type="text" id="tx-4" style="display: none;" />
+    <input type="text" id="tx-5" style="display: none;" />
+
+ </div>
+
+
+
+<script>
+$( "select" )
+  .change(function () {
+    var str = "";
+     var x = document.getElementById("sel").selectedIndex;
+    $( "select option:selected" ).each(function() {
+     str += $( this ).text() + " " + x;
+    });
+    $( "div" ).text( str );
+  })
+  .change();
+</script>
+
+
+<script>
+
+
+
+    $('#sel').change(function() {
+    var selected = $(this).val();
+    var x = document.getElementById("sel").selectedIndex;
+
+		switch (x)
+		{
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+				$('#tx-2').show();
+				$('#tx-0').hide();
+				$('#tx-1').hide();
+				$('#dt-0').hide();
+				$('#dt-1').hide();
+				break;
+			case 5:
+				$('#tx-2').hide();
+				$('#tx-0').show();
+				$('#tx-1').show();
+				$('#dt-0').hide();
+				$('#dt-1').hide();
+				 break;
+			case 6:
+				$('#tx-2').hide();
+				$('#tx-0').hide();
+				$('#tx-1').hide();
+				$('#dt-0').show();
+				$('#dt-1').show();
+				break;
+			default:
+			   $('#tx-2').show();
+				$('#tx-0').hide();
+				$('#tx-1').hide();
+				$('#dt-0').hide();
+				$('#dt-1').hide();
+
+		}
+
+
+});
+
+
+
+
+</script>
+
+
+
+
+
+<script>
+ $('#report').change(function() {
+    var selected = $(this).val();
+    var x = document.getElementById("report").selectedIndex;
+
+		switch (x)
+		{
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+				$('#ff').hide();
+
+				 break;
+
+			case 6:
+			   $('#ff').show();
+				break;
+
+			default:
+			   $('#ff').show();
+
+
+		}
+
+
+});
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+

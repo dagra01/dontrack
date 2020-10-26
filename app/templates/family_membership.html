@@ -1,0 +1,100 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+            <h3> Family Membership</h3>
+            <table border="0" style="border-collapse: separate; border-spacing: 5px;">
+                <tr>
+                    {{ form.hidden_tag() }}
+                <tr>
+                    <th>{{ form.family_name.label }}</th>
+                    <td>
+                        {{ form.family_name() }} {{form.get_family }}
+                        {% for error in form.family_name.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+                </tr>
+                <tr>
+                    <th>{{ form.family_id.label }} </th>
+                    <td>
+                        {{ form.family_id() }}
+                        {% for error in form.family_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr><td colspan="2">
+
+                {% if count > 0 %}
+                    <table  class="table table-bordered">
+                        <thead  style="font-size:12px;">
+                            <tr >
+                              <th scope="col">Member</th>
+                              <th scope="col">Relationship</th>
+
+                            </tr>
+                          </thead>
+                        <tbody>
+
+                {% for record in range(count) %}
+                   
+                <tr style="font-size:11px;">
+                    <td >
+                        <input id={{record}} name="family" type="checkbox" value={{result[record].member_id}} >
+                        <label for={{record}}>{{ result[record].member_lastname}}, {{ result[record].member_firstname}}</label>
+
+
+
+                    </td>
+               <!-- </tr>
+                <tr>-->
+                    <td  >
+
+
+                        {% for choice in choices %}
+                        {% set count = choices.index(choice) %}
+
+                        <input id={{count}} name={{result[record].member_id}} type="radio" value={{choice.relation_id}} >
+                        <label for={{count}}>{{choice.relation_description.capitalize()}}</label>
+
+                        {% endfor %}
+                    </td>
+
+                </tr>
+
+
+
+                {% endfor %}
+
+                  </tbody>
+                </table>
+                {% endif %}
+
+
+
+                <tr align="center" style="font-size:10px; color:red"><td colspan="2">{{ form.family_alert.label }}</td></tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        {{ ctr.submit}}
+                        {{ ctr.cancel }}
+                        {{ ctr.close }}
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

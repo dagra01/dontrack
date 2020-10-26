@@ -1,0 +1,82 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+<form action="" method="post">
+
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+        {% if action == "edit" %}
+        <h4 align="center">Edit Donation Type</h4>
+        {% else %}
+        <h4 align="center">New Donation Type</h4>
+        {% endif %}
+        <hr size="100">
+        <div class="form-group">
+            <table>
+                <tr class="form-group">
+                    <th>{{ form.code.label }}</th>
+                    <td>
+                        {% if action == "edit" %}
+                        {{ form.code(size=32, readonly=True) }}
+                        {% else %}
+                        {{ form.code(size=32) }}
+                        {% endif %}
+                        {% for error in form.code.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+
+                    </td>
+                </tr>
+                <br>
+
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="form-group">
+                    <th>{{ form.description.label }} &nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <td>
+
+                        {{ form.description(size=32) }}
+                        {% for error in form.description.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="form-group">
+                    <th>{{ form.date.label }} &nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <td>
+
+                        {{ form.date() }}
+                        {% for error in form.date.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+
+                <tr class="form-group">
+                    <th></th>
+                    <td>
+                        {% if action == "edit" %}
+                        {{ form.update() }} {{ form.delete() }}
+                        {% else %}
+                        {{ form.submit() }}
+                        {% endif %}
+                        {{ form.cancel() }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
+{% endblock %}

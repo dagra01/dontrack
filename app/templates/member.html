@@ -1,0 +1,140 @@
+{% if current_user.member_firstname %}
+{% extends "member_base.html" %}
+{% else %}
+{% extends "base.html" %}
+{% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+<form action="" method="post">
+
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+        {% if action == "edit" %}
+        <h4 align="center">Edit Member Details</h4>
+        {% else %}
+        <h4 align="center">New Member</h4>
+        {% endif %}
+        <hr size="100">
+        <div class="form-group">
+            <table style="font-size:11px;">
+                <tr>
+                    <th>{{ form.member_id.label }}</th>
+                    <td>
+
+                        {% if action == "edit" %}
+                        {{ form.member_id(size=7, readonly=True) }}
+                        {% else %}
+                        {{ form.member_id(size=7) }}
+
+                        {% endif %}
+
+
+                        {% for error in form.member_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+
+
+                        <br>
+                    </td>
+
+
+                </tr>
+
+                <tr class="form-group">
+
+                    <th>{{ form.lastname.label }}</th>
+                    <td>{{ form.lastname(size=20) }}
+                        {% for error in form.lastname.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="form-group">
+                    <th> {{ form.firstname.label }}</th>
+                    <td>{{ form.firstname(size=32) }}
+                        {% for error in form.firstname.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="form-group">
+                    <th>{{ form.middlename.label }}</th>
+                    <td>{{ form.middlename(size=32) }}
+                        {% for error in form.middlename.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th>{{ form.type_id.label }}</th>
+                    <td>{{ form.type_id() }}
+                        {% for error in form.type_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th>{{ form.group_id.label }}</th>
+                    <td>{{ form.group_id(rows=3, multiple=True) }}
+                        {% for error in form.group_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th>{{ form.phone_no.label }}</th>
+                    <td> {{ form.phone_no(size=11) }}
+                        {% for error in form.phone_no.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="form-group">
+                    <th>{{ form.email.label }}</th>
+                    <td>{{ form.email(size=32) }}
+                        {% for error in form.email.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="form-group">
+                    <th>{{ form.address.label }}</th>
+                    <td>{{ form.address(size=32) }}
+                        {% for error in form.address.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th> {{ form.address1.label }}</th>
+                    <td>{{ form.address1(size=32) }}
+                        {% for error in form.address1.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+        <hr class="hr">
+
+        {% if action == "edit" %}
+        <span></span> {{ ctr.update() }} </span><span>&nbsp; &nbsp;</span><span> {{ ctr.delete() }}</span>
+        {% else %}
+        {{ ctr.submit() }}
+        {% endif %}
+
+        <span>&nbsp; &nbsp;</span>
+        <span>&nbsp;{{ ctr.cancel() }} &nbsp;</span>
+        <span>&nbsp;{{ ctr.close() }} &nbsp;</span>
+
+    </div>
+</form>
+{% endblock %}

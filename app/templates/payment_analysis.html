@@ -1,0 +1,81 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+            <h3>Analyze Perentage Redemption</h3>
+            <table border="0" style="border-collapse: separate; border-spacing: 5px;">
+
+
+
+                <tr>
+                    <th>Analysis Option:</th>
+
+                    {% for subfield in form.analyze_option %}
+                    <span>&nbsp;</span>
+
+                    <td  colspan="" align="right"><span>&nbsp;</span> {{ subfield}} <span>&nbsp;</span> {{
+                        subfield.label  }}
+                    </td>
+
+                    {% endfor %}
+
+
+                </tr>
+
+                <tr>
+                    <th>Analysis Interval(%):</th>
+
+                    {% for subfield in form.analyze_interval %}
+                    <span>&nbsp;</span>
+
+                    <td  colspan="" align="right"><span>&nbsp;</span> {{ subfield}} <span>&nbsp;</span> {{
+                        subfield.label  }}
+                    </td>
+
+                    {% endfor %}
+
+
+                </tr>
+
+
+                <tr>
+                    <th>&nbsp;&nbsp;</th>
+
+
+                    <td align="right" colspan="5">{{ form.donation_code }}</td>
+
+
+                </tr>
+                <tr>
+                    <th>{{ form.analyze_year.label}}</th>
+
+
+                    <td align="right" colspan="5">{{ form.analyze_year() }}</td>
+
+
+                </tr>
+                <tr>
+                <tr><td colspan="6">&nbsp;</td></tr>
+                    <td align="right" colspan="6">
+                        {{ form.btnview }}
+                        {{ form.btnprint }}
+                        {{ form.btndownload}}
+                        {{ ctr.cancel }}
+                        {{ ctr.close }}
+
+                    </td>
+                </tr>
+
+                </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

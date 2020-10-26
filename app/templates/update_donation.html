@@ -1,0 +1,23 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% block content %}
+
+
+    <form action="{{url_for('donations', admin='admin')}}" class="form-size" method="post" >
+
+
+           <h3>Add System User</h3>
+            <hr>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }} <br>
+            {{ form.username(size=32) }} {{ form.get_user() }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ ctr.submit() }}  {{ ctr.cancel() }} {{ ctr.delete() }}</p>
+
+    </form>
+
+{% endblock %}

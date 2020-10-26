@@ -1,0 +1,63 @@
+{% block content %}
+<style>
+
+table {
+    border-collapse: collapse;
+    width: 30%;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    text-align: left;
+}
+
+</style>
+
+<div align="center" >
+    <h3>Perentage Redemption Analysis </h3>
+    {% if  donation_name %}
+    <h5>{{donation_name}}{% endif %} </h5>
+   {% if  donation_year %}
+    <h4> Year: {{donation_year}}{% endif %} </h4>
+    <h6>Printed : {{ print_time }} </h6>
+
+    <table >
+        <thead style="font-size:13px;">
+        <tr align="left">
+
+            <th class="col-1">% Redemption</th>
+
+            <th class="col-2"  >No.of Members</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody >
+        {% if result|length > 0 %}
+
+        {% for i in range(result_size) %}
+        {% for detail in result %}
+
+
+
+        <tr>
+
+            <td> {{ header[i] }} </td> <td > {{detail[i]}} </td>
+        </tr>
+
+
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+</div>
+
+
+<!--<a class="btn btn-info" href="{{ url_for('download', id=result[0].donation_id) }}">Download</a>-->
+{% endblock %}

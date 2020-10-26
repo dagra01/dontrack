@@ -1,0 +1,106 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div class="form-size" align="center" class="jumbotron">
+
+        <div class="form-group">
+            <h3> Family Members List</h3>
+            <table border="0" style="border-collapse: separate; border-spacing: 5px;">
+                <tr>
+                    {{ form.hidden_tag() }}
+                <tr>
+                    <th>{{ form.family_id.label }}</th>
+                    <td>
+
+                        {% if current_user.member_firstname %}
+                            {{ form.family_id(readonly="True") }} {{form.get_family }}
+                            {% for error in form.family_name.errors %}
+                            <span style="color: red">[{{ error }}]</span>
+                            {% endfor %}
+
+                        {% else %}
+                            {{ form.family_id() }} {{form.get_family }}
+                            {% for error in form.family_name.errors %}
+                            <span style="color: red">[{{ error }}]</span>
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+
+
+                    </td>
+                </tr>
+
+
+                </tr>
+                <tr><td colspan="3"></td></tr>
+                <tr><td colspan="3"></td></tr>
+
+                <tr>
+                    <td colspan="2">
+                        {% if count > 0 %}
+                            <table class="table table-striped">
+                                <thead  style="font-size:12px;">
+                            <tr >
+                              <th scope="col">Family ID/Name</th>
+                              <th scope="col">Member</th>
+                              <th scope="col">Relationship</th>
+
+                            </tr>
+                          </thead>
+                                <tbody>
+
+                                {% for record in result %}
+                                <tr style="font-size:11px;">
+                                    <td>
+                                        <strong>
+                                            {{record.family_id}} / {{record.family_name}}
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <a class="alert-link" href="{{ url_for('edit_family_member', id=record.member_id) }}">
+                                            <p>{{ family_array[record.member_id]}}</p>
+                                        </a>
+
+                                    </td>
+                                    <td>
+                                        {{family_array[record.relation_id] }}
+
+                                    </td>
+
+                            </tr>
+
+
+                            {% endfor %}
+
+
+
+
+
+                            </table>
+                        {% endif %}
+
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td align="center" colspan="2">
+                        {{ ctr.cancel }}
+                        {{ ctr.close }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

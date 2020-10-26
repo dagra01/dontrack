@@ -1,0 +1,54 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+
+
+<form method="post" class="form-size" enctype="multipart/form-data">
+
+    <h3>{{ title}}</h3>
+    <hr>
+    {{ form.hidden_tag() }}
+    <div>
+        <table>
+        <tr>
+            <td>
+                {{ form.hidden_tag() }}
+                {{ form.file }}
+                {% for error in form.file .errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </td>
+            <td>
+                <input type="submit">
+                <button type="button" onclick="window.location.href='{{ url_for( 'index') }}';">Close</button>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <idv>
+
+
+        <table>
+        <tr>
+           {% if missing  %}
+        <tr>
+            <td>
+                <h5 ><font color="red">**Error Data**</font></h5>
+            </td>
+        </tr>
+
+        {%  for field in missing_fields %}
+         <tr>
+
+            <td>
+               {{ field }}
+            </td>
+         </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+
+    </idv>
+
+</form>
+
+{% endblock %}

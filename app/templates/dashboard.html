@@ -1,0 +1,92 @@
+{% extends "bootstrap/base.html" %}
+{% include 'html_dependencies.html' %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+ <div class="container">
+        <ul class="nav nav-pills">
+   <!--<li ><a  href="/" title="Home">Pricing</a></li> -->
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Membership<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Add New Member</a></li>
+            <li><a href="#">Edit Members Details</a></li>
+        </ul>
+    </li>
+
+
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Donations and Payments<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Create New Donation</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span>Payments</strong></li>
+            <li><a href="#">Pledge Redemption</a></li>
+            <li><a href="#">Payments and Outstandings</a></li>
+            <li class="divider"></li>
+            <li><strong><span>&nbsp</span> Analysis</strong></li>
+            <li class="divider"></li>
+            <li><a href="#">Find members with a donation Range</a></li>
+        </ul>
+    </li>
+    <li class="dropdown pull-right">
+
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><strong><span>&nbsp</span>Donations</strong></li>
+            <li class="divider"></li>
+            <li><a href="#">Type of Donation</a></li>
+            <li><a href="#">Mode of Donation</a></li>
+            <li><a href="#">Mode of Redemption</a></li>
+            <li class="divider"></li>
+
+
+               <li><strong><span>&nbsp</span>Setup</strong></li>
+               <li class="divider"></li>
+               <li><a href="#">Initialize Church Account</a></li>
+               <li><a href="#">Add Admin account</a></li>
+               <li class="divider"></li>
+               <li><a href="#"><span class="glyphicon glyphicon-alert"></span> Your Alerts</a></li>
+               <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+
+
+
+
+
+
+        </ul> <!---- Admin -->
+
+
+    </li>
+</ul>
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+
+            </ul>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+   <form action="" method="post">
+
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+       {% if action == "edit" %}
+        <h4 align="center">Edit Mode of Donation</h4>
+        {% else %}
+        <h4 align="center">Organization Details</h4>
+       {% endif %}
+        <hr size="100">
+         <div class="form-group">
+            <table >
+            <tr class="form-group">
+                <th>{{ form.name.label }}</th>
+                <td>
+			        {% if action == "edit" %}
+                		{{ form.code(size=32, readonly=True) }}
+	        	    {% else %}
+                    {{ form.name(size=32) }}
+            		{% endif %}
+			        {% for error in form.name.errors %}
+               		 <span style="color: red">[{{ error }}]</span>
+            		{% endfor %}
+
+		        </td>
+            </tr>
+<br>
+
+             <tr class="form-group">
+
+                <th>{{ form.email.label }}</th>
+                <td>{{ form.email(size=20) }}
+               {% for error in form.email.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+
+            <tr class="form-group">
+
+                <th>{{ form.address.label }}</th>
+                <td>{{ form.address(size=20) }}
+               {% for error in form.address.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+             <tr class="form-group">
+
+                <th>{{ form.address1.label }}</th>
+                <td>{{ form.address1(size=20) }}
+               {% for error in form.address1.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+            <tr class="form-group">
+
+                <th>{{ form.lga.label }}</th>
+                <td>{{ form.lga(size=20) }}
+               {% for error in form.lga.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+            <tr class="form-group">
+
+                <th>{{ form.state.label }}</th>
+                <td>{{ form.state(size=20) }}
+               {% for error in form.state.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+            <tr class="form-group">
+
+                <th>{{ form.phone_no.label }}</th>
+                <td>{{ form.phone_no(size=20) }}
+               {% for error in form.phone_no.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+                <tr class="form-group">
+
+                <th>{{ form.phone_no_2.label }}</th>
+                <td>{{ form.phone_no_2(size=20) }}
+               {% for error in form.phone_no_2.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}</td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+ </div>
+         <hr class="hr" >
+
+        {% if update %}
+           <span></span> {{ ctr.update() }} </span>
+        {% else %}
+             {{ ctr.submit() }}
+        {% endif %}
+
+       <span>&nbsp; &nbsp;</span>
+        <span>&nbsp;{{ ctr.cancel() }} &nbsp;</span>
+        <span>&nbsp;{{ ctr.close() }} &nbsp;</span>
+
+    </div>
+</form>
+{% endblock %}

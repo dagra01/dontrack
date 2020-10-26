@@ -1,0 +1,8 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+<div alert alert-info role="alert">
+    <h2 header="alert-heading"><font color="RED">An unexpected error has occurred <span class="glyphicon glyphicon-warning-sign"></span></font></h2>
+    <h4>Sorry for the inconvenience, Please contact your administrator. </h4>
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+</div>
+{% endblock %}

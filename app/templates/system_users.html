@@ -1,0 +1,60 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            <small>
+                {{ title }}
+            </small>
+        </h1>
+    </div>
+    <div class="alert alert-primary" role="alert">
+          <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Username.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col">Super Admin</th>
+
+
+                </tr>
+              </thead>
+
+            {% for mode in list_mod %}
+              {% if mode.username != 'sa' %}
+                <tr>
+                    <td>
+                        {%  if current_user.su %}
+                        <a class="alert-link" href="{{ url_for('edit_user', username= mode.username) }}">
+                            {{ mode.username}}
+                        </a>
+                        {% else %}
+                         {{ mode.username}}
+                        {% endif %}
+
+
+                    </td>
+                    <td>
+                        {{ mode.lastname}} {{ mode.firstname}}
+                    </td>
+                    <td>
+                        {{ mode.email}}
+                    </td>
+                    <td>
+                        {{ mode.admin}}
+                    </td>
+                    <td>
+                        {{ mode.su}}
+                    </td>
+
+                </tr>
+              {% endif %}
+
+        {% endfor %}
+              </tbody>
+     </table>
+    </div>
+    <!--<a class="btn btn-success" href="{{ url_for('grouptype') }}">New Group Type</a>-->
+    <a class="btn btn-success" href="{{ url_for('index') }}">Close</a>
+{% endblock %}

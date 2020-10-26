@@ -1,0 +1,167 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+});
+</script>
+
+    <div class="page-header">
+        <h1>
+            <small>
+               {{ title }}
+            </small>
+        </h1>
+    </div>
+    <div class="table-responsive-sm">
+        <input id="myInput" type="text" placeholder="Search..">
+
+
+
+    {% if current_user.member_firstname %}
+
+        <table width="100%">
+            <tr align="right">
+            <td><a class="btn btn-info  btn-sm"  href="{{ url_for('statement_of_account', mid=result[0].member_id ) }}">
+                         <small><font size=".8"> Statement of Account</font></small>
+                    </a>
+            </td>
+            </tr>
+
+        </table>
+    {% endif %}
+
+
+
+
+        <table class="table table-striped table table-sm" >
+
+             <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Donation Type</th>
+                    {% if current_user.admin %}
+                    <th scope="col">Donor</th>
+                    {% endif %}
+                    <th scope="col">Donation ID</th>
+                    <th scope="col">Donation Date</th>
+                    <th scope="col">Amount Pledge</th>
+                    <th scope="col">Amount Paid</th>
+
+
+            </thead>
+            <tbody id="myTable">
+            {% for donation in result %}
+
+
+            <tr>
+
+                <td>
+
+                  {{ typename[donation.donation_type_id] }}
+
+                </td>
+               <!-- <td>
+                        {{ typename[donation.member_id] }}<br>
+                     <a class="btn btn-info  btn-sm"  href="{{ url_for('statement_of_account', mid=donation.member_id) }}">
+                         <small><font size=".8"> Statement of Account</font></small>
+                    </a>
+
+                </td>-->
+
+                {% if current_user.member_firstname %}
+
+                {% else %}
+
+                <td>
+                        {{ typename[donation.member_id] }}<br>
+                     <a class="btn btn-info  btn-sm"  href="{{ url_for('statement_of_account', mid=donation.member_id) }}">
+                         <small><font size=".8"> Statement of Account</font></small>
+                    </a>
+
+                </td>
+                {% endif %}
+
+
+                <td>
+                    {% if current_user.admin %}
+                        <!-- {{ donation.donation_id }}-->
+                    <a  class="alert-link" href="{{ url_for('donations', id=donation.donation_id) }}">
+                        {{ donation.donation_id }}</a>
+                    {%  else %}
+                    {{ donation.donation_id }}
+                    {% endif %}
+
+
+                </td>
+
+                <td>
+                    {{  donation.donation_date.strftime('%d-%m-%Y') }}
+
+                </td>
+
+                <td >
+                    {{ '{0:,.2f}'.format(donation.amount|float) }}
+
+                </td>
+
+                <td >
+                    {{ '{0:,.2f}'.format(typename[donation.donation_id]|float) }}
+
+                </td>
+            {% if current_user.admin %}
+                <td align="right">
+                    {% if not typename[donation.payment_status] %}
+
+                    <a  class="alert-link" href="{{ url_for('donationstrail', id=donation.donation_id) }}">
+                           Redeem Donation
+                    </a>
+                    {% else %}
+                            Payment Completed
+                    {% endif %}
+
+                </td>
+             {% endif %}
+
+                <td align="right">
+                  {% if typename[donation.donation_id]|float > 0.0 %}
+                    <a  class="alert-link" href="{{ url_for('donationdetails', id=donation.donation_id) }}">
+                           Payment Details
+                    </a>
+                     {% else %}
+                            Payment Details
+                    {% endif %}
+
+
+                </td>
+
+
+
+            </tr>
+
+
+
+
+
+
+
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <a class="btn btn-success" href="{{ url_for('search', module=module) }}">Close</a>
+
+
+{% endblock %}

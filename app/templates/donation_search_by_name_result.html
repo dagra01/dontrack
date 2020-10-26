@@ -1,0 +1,108 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+{% block content %}
+<div class="page-header">
+    <h1>
+        <small>
+            {{ title }}
+        </small>
+    </h1>
+</div>
+<div class="table-responsive-sm">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Donation Name</th>
+            <th scope="col"> Donation Date</th>
+            <th scope="col">Amount Pledge</th>
+            <th scope="col">Amount Paid</th>
+            <th scope="col">Outstanding</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+
+
+        </thead>
+        <tbody>
+
+        {% for member in result %}
+        <tr>
+            <td colspan="8">
+
+                <strong> {{ member.member_firstname}} {{ member.member_lastname}} </strong><br>
+                <a class="btn btn-info  btn-sm" href="{{ url_for('statement_of_account', mid=member.member_id) }}">
+                    <small><font size=".8"> Statement of Account</font></small>
+                </a>
+
+                {% for child in member.donation.all() %}
+                <!--<table class="table">
+                    <tbody>-->
+
+        <tr>
+            <td></td>
+            <td>
+                {% if current_user.admin %}
+                <a class="alert-link" href="{{ url_for('donations', id=child.donation_id) }}">
+                    {{ typename[child.donation_type_id, 0] }}
+
+                </a>
+
+                {% else %}
+                {{ typename[child.donation_type_id, 0] }}
+                {% endif %}
+
+            </td>
+            <td>
+                {{child.donation_date.strftime('%d-%m-%Y') }}
+            </td>
+
+            <td>
+                {{ '{0:,.2f}'.format(child.amount|float) }}
+            </td>
+            <td>
+                {{ typename[child.donation_type_id, 1] }}
+                {{ '{0:,.2f}'.format(typename[child.donation_id, 1]|float) }}
+            </td>
+            <td>
+                {{ '{0:,.2f}'.format(typename[child.donation_id, 2]|float) }}
+            </td>
+
+            <td>
+                {% if not child.payment_status %}
+
+                <a class="alert-link" href="{{ url_for('donationstrail', id=child.donation_id) }}">
+                    Redeem Donation
+                </a>
+                {% else %}
+                Payment Completed
+                {% endif %}
+
+            </td>
+            <td align="right">
+                {% if typename[child.donation_id, 1]> 0.0 %}
+                <a class="alert-link" href="{{ url_for('donationdetails', id=child.donation_id) }}">
+                    Payment Details
+                </a>
+                {% else %}
+                Payment Details
+                {% endif %}
+
+
+            </td>
+
+
+        </tr>
+
+        <!--</tbody>
+        </table>-->
+        {% endfor %}
+
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<a class="btn btn-success" href="{{ url_for('search', module=module) }}">Close</a>
+{% endblock %}

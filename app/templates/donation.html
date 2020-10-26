@@ -1,0 +1,146 @@
+{% if current_user.member_firstname %} 	{% extends "member_base.html" %}            {% else %}          {% extends "base.html" %}     {% endif %}
+
+{% include 'html_dependencies.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-size" align="center" class="jumbotron">
+        {% if action == "edit" %}
+        <h4 align="center">{{ title }}</h4>
+        {% else %}
+        <h4 align="center">{{ title }}</h4>
+        {% endif %}
+        <hr size="100">
+        <div class="form-group">
+            <table>
+
+                <tr>
+                    <th>{{ form.donation_type_id.label }}</th>
+                    <td>
+                        {% if action == "edit" %}
+                        {{ form.donation_type_id(disabled="disabled") }}
+                        {% else %}
+                        {{form.donation_type_id() }}
+
+                        {% endif %}
+                        {% for error in form.donation_type_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>{{ form.member_id.label }}</th>
+                    <td>
+
+                        {% if  action == "update" or current_user.member_firstname  %}
+                        {{ form.member_id(size=7, readonly=True) }}
+                        {% else %}
+                        {{ form.member_id(size=7) }}
+
+                        {% endif %}
+
+
+                        {% for error in form.member_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+
+
+                        <br>
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <th>{{ form.member_name.label }}</th>
+                    <td>
+                        {% if  action == "update"%}
+                        {{ form.member_name(readonly=True) }}
+                        {% else %}
+                        {{form.member_name() }}
+
+                        {% endif %}
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>{{ form.donation_id.label }}</th>
+                    <td>
+                        {{ form.donation_id(readonly=True) }} &nbsp;
+                        {% for error in form.donation_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                        {% if action == "edit"%}
+                        <!--  {{ form.generate_id() }} -->
+                        {% else %}
+                        {{form.generate_id() }}
+
+                        {% endif %}
+
+                    </td>
+                </tr>
+
+
+                <tr class="form-group">
+
+                    <th>{{ form.mode_id.label }}</th>
+                    <td>{{ form.mode_id() }}
+                        {% for error in form.mode_id.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="form-group">
+                    <th>{{ form.date .label }}</th>
+                    <td>{{ form.date (size=32) }}
+                        {% for error in form.date .errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+                <tr class="form-group">
+                    <th> {{ form.amount.label }}</th>
+                    <td>{{ form.amount(size=32) }}
+                        {% for error in form.amount.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th> {{ form.comment.label }}</th>
+                    <td>{{ form.comment(size=32) }}
+                        {% for error in form.comment.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+        <hr class="hr">
+
+        {% if action =="update" %}
+        <span></span>  {{ ctr.update() }} {{ ctr.delete() }} </span><span>&nbsp;&nbsp;
+         {% else %}
+        {{ ctr.submit }}
+
+
+        {% endif %}
+
+       <span>&nbsp; &nbsp;</span>
+        <span>&nbsp;{{ ctr.cancel() }} &nbsp;</span>
+        <span>&nbsp;{{ ctr.close() }} &nbsp;</span>
+    </span>
+    </div>
+</form>
+
+{% endblock %}

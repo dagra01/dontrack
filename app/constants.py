@@ -1,0 +1,6 @@
+eq = "="
+gt = ">"
+lt = "<"
+gte = ">="
+lte = "<="
+#btw = "BETWEEN( {} AND {} )"
