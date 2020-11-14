@@ -2,8 +2,9 @@
 import math
 from os.path import splitext, expanduser
 from random import randint
-#from tkinter import *
-#from tkinter import filedialog
+#import tkinter as tk
+from tkinter import *
+from tkinter import filedialog
 import flask_excel as excel
 import pdfkit
 
@@ -2699,7 +2700,8 @@ def restore():
         flash('Admin right required')
         return redirect(url_for('index'))
     root = Tk()
-    root.wm_title('Donatrack')
+    #root.wm_title('Donatrack')
+    Tk().withdraw()
 
     filename = filedialog.askopenfilename(initialdir=app.config['BACKUP_FOLDER'], title="Select file",
                                           filetypes=(("Databse Backup file", "*.db"), ("all files", "*.*")))
@@ -2719,34 +2721,30 @@ def restore():
 @app.route('/export_backup', methods=['GET', 'POST'])
 @login_required
 def export_backup():
-    conn = db_conn_only()
-    db_backup = 'donatrack_db_dump' + time.strftime("-%Y%m%d-%H%M%S") + '.sql'
-    root = Tk()
-    directory = filedialog.askdirectory()
-    root.destroy()
-    filename = os.path.join(directory, db_backup)
-    # return filename
-    export_db(conn, filename)
+    # conn = db_conn_only()
+    # db_backup = 'donatrack_db_dump' + time.strftime("-%Y%m%d-%H%M%S") + '.sql'
+    # root = Tk()
+    # directory = filedialog.askdirectory()
+    # root.destroy()
+    # filename = os.path.join(directory, db_backup)
+    # # return filename
+    # export_db(conn, filename)
+    
+    from tkinter import Tk
+    from tkinter.filedialog import askdirectory
+    path = askdirectory(title='Select Folder') # shows dialog box and return the path
+    print(path)  
     return redirect(url_for('index'))
 
 
 @app.route('/import_backup', methods=['GET', 'POST'])
 @login_required
 def import_backup():
-    root = Tk()
-    filename = filedialog.askopenfilename(initialdir="/", title="Select file",
-                                          filetypes=(("Databse Backup file", "*.sql"), ("all files", "*.*")))
-    root.destroy()
-    db_name = 'donatrack.db' + time.strftime("-%Y%m%d-%H%M%S")
-    restore_db_name = os.path.join(app.config['BACKUP_FOLDER'], db_name)
-    if filename:
-        conn = sqlite3.connect(restore_db_name)
-        restore_db(conn, db_file=restore_db_name, filename=filename)
-        conn.close()
-        flash("database successfully imported as " + restore_db_name)
-    else:
-        flash('Please choose an SQL file')
-        return redirect(url_for('index'))
+    import Tkinter
+    root = Tkinter.Tk()
+    root.title("Fenster 1")
+    root.geometry("100x100")
+    root.mainloop()
     return redirect(url_for('index'))
 
 
@@ -2758,6 +2756,7 @@ def load_data():
         return redirect(url_for('index'))
 
     root = Tk()
+    Tk().withdraw()
     old_db_sqlite_file = app.config['OLD_DB_SQLITE_PATH']
     tables = ["Members", "MemberType", "MemberGroupLink", "GroupType", "TypeOfDonation", "Donations",
               "Donationtrail", "OwnerDetails", "PaymentType", "user"]  # Ensure the payment and user
@@ -2934,7 +2933,9 @@ def statement_of_account_pdf(mid):
     order by members.member_id"""
     query_stmt = sql_stmt.format(mid)
     # return query_stmt
-    qry_result = conn.execute(query_stmt).fetchall()
+    #qry_result = conn.execute(query_stmt).fetchall()
+    conn.execute(query_stmt)
+    qry_result = conn.fetchall()
     if len(qry_result) > 0:
         # owner_detail = OwnerDetails.query.first_or_404()
         owner_detail = OwnerDetails.query.first()
